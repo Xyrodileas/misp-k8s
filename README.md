@@ -14,6 +14,7 @@ The following containers are used for the deployment :
 - https://hub.docker.com/repository/docker/xyrodileas/misp/
 - https://hub.docker.com/repository/docker/xyrodileas/misp-dashboard
 
+![](Architecture_Misp.png)
 
 ## Deployment
 
