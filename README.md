@@ -29,11 +29,12 @@ terraform apply --auto-approve -input=false plan.tfplan
 * 0.1
     * Initial release
 
-## Meta
+## Contributor
 
-Alexis Vuillaume – [@Xyrodileas](https://twitter.com/Xyrodileas)
-Jerem991 - https://github.com/jerem991
-JYNolen - https://github.com/jynolen
+* Alexis Vuillaume – [@Xyrodileas](https://twitter.com/Xyrodileas)
+* Jerem991 - https://github.com/jerem991
+* JYNolen - https://github.com/jynolen
+* VVX7 - https://github.com/VVX7
 
 Distributed under the GPL3. See ``LICENSE`` for more information.
 
