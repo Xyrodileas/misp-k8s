@@ -18,7 +18,8 @@ The following containers are used for the deployment :
 
 ## Deployment
 
-
+Configure the variables in prod.tfvars
+Then, from the CLI :
 ```sh
 terraform init -backend-config="key=misp" -backend-config="bucket=$(STATE_STORAGE_BUCKET)" -backend-config="region=$(STATE_STORAGE_REGION)"
 terraform plan -var-file=prod.tfvars -input=false -out=plan.tfplan
