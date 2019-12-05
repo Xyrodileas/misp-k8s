@@ -36,6 +36,11 @@ terraform apply --auto-approve -input=false plan.tfplan
 * Jerem991 - https://github.com/jerem991
 * JYNolen - https://github.com/jynolen
 * VVX7 - https://github.com/VVX7
+* apleks_ - [@apleks_](https://twitter.com/apleks_)
+
+Special Thanks to the following projects :
+- https://github.com/MISP/misp-docker (The container used is heavily forked from the official MISP repository)
+- https://github.com/MISP/misp-dashboard
 
 Distributed under the GPL3. See ``LICENSE`` for more information.
 
