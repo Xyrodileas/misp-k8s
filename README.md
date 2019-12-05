@@ -3,8 +3,8 @@
 
 
 Provide an automated deployment with High Availability for MISP and MISP-Dashboard in K8S and AWS.
-The project use the following technologies :
-- Terraform to automate the deployment,;
+The project uses the following technologies :
+- Terraform to automate the deployment;
 - AWS RDS to persist data for MISP;
 - Elasticache Redis to persist data for MISP-Dashboard;
 - Route53 to manage certificate and DNS entries;
@@ -37,12 +37,13 @@ terraform apply --auto-approve -input=false plan.tfplan
 * Alexis Vuillaume – [@Xyrodileas](https://twitter.com/Xyrodileas)
 * Jerem991 - https://github.com/jerem991
 * JYNolen - https://github.com/jynolen
-* VVX7 - https://github.com/VVX7
+* Roger Johnston - [@VV_X_7](https://twitter.com/VV_X_7) https://github.com/VVX7
 * apleks_ - [@apleks_](https://twitter.com/apleks_)
 
 Special Thanks to the following projects :
 - https://github.com/MISP/misp-docker (The container used is heavily forked from the official MISP repository)
 - https://github.com/MISP/misp-dashboard
+- https://github.com/0xtf/HAMISPA (Thank you @0xtf for inspiring this project!)
 
 Distributed under the GPL3. See ``LICENSE`` for more information.
 
