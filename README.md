@@ -19,6 +19,10 @@ The following containers are used for the deployment :
 ## Deployment
 
 Configure the variables in prod.tfvars
+Configure the Kube config provbider.tf :
+```sh
+config_path = "/tmp/kubeconfig"
+```
 
 Then, from the CLI :
 ```sh
@@ -26,6 +30,37 @@ terraform init -backend-config="key=misp" -backend-config="bucket=$(STATE_STORAG
 terraform plan -var-file=prod.tfvars -input=false -out=plan.tfplan
 terraform apply --auto-approve -input=false plan.tfplan
 ```
+
+## Security groups
+
+| SG Name | Protocol | Port | Source | Description |
+|---------|----------|------|--------|-------------|
+xxxxxxxx-default-mispingre-xxxx | HTTPS | 443 | IP in authorized_ips | Managed LoadBalancer securityGroup by ALB Ingress Controller to authorize https traffic from external to the ALB in front of the misp container |
+xxxxxxxx-default-mispdashb-xxxx | HTTPS | 443 | IP in authorized_ips | Managed LoadBalancer securityGroup by ALB Ingress Controller to authorize authorize https traffic from external to the ALB in front of the misp-dashboard container |
+instance-xxxxxxxx-default-mispdashb-xxxx | ALL | 0-65535 | IP in authorized_ips | SG to authorize authorize traffic from the ALB to misp-dashboard container |
+instance-xxxxxxxx-default-mispingre-xxxx | ALL | 0-65535 | IP in authorized_ips | SG to authorize authorize traffic from the ALB to misp-dashboard container |
+
+Note that the following Security groups are imported from the EKS deployment :
+- eks-[env]-node-ext-sg : Used to allow communication between nodes, and between nodes and the Cluster Control Plane.
+
+## Kubernetes
+
+To deploy MISP, we used our internal Kubernetes Cluster, based on EKS.
+This allow us to abstract the infrastructure layers for developers in order to scale and orchestrate our workload.
+
+This deployment could be ported to an on-prem cluster, but change related to RDS and Redis will be required.
+By default, RDS and Redis are not publicly available outside of AWS.
+
+![](Architecture_Misp_k8s.png)
+
+## AWS RDS and Elasticache Redis
+
+In order to have high availability for storages (RDS and Redis), we choose to use the managed services AWS RDS and Elasticache Redis in order to reduce the complexity and the maintenance required by deployment :
+- RDS and Elasticache are multi AZ;
+- Backup and restore are managed by AWS;
+- Easier to scale up.
+
+Be mindful that the default configuration allow terraform to destroy RDS and Redis. Make sure you have regular backup.
 
 ## Release History
 
